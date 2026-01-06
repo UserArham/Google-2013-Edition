@@ -126,28 +126,39 @@
     <span>About</span>
   </footer>
 
-  <script>
-    // Redirect to google.com
-    const input = document.getElementById("searchInput");
-    const searchBtn = document.getElementById("searchBtn");
-    const luckyBtn = document.getElementById("luckyBtn");
+ <script>
+  const input = document.getElementById("searchInput");
+  const searchBtn = document.getElementById("searchBtn");
+  const luckyBtn = document.getElementById("luckyBtn");
 
-    // Press Enter to redirect
-    input.addEventListener("keydown", function(event) {
-      if(event.key === "Enter") {
-        window.location.href = "https://www.google.com";
-      }
-    });
+  function googleSearch() {
+    const query = input.value.trim();
+    if (query !== "") {
+      window.location.href =
+        "https://www.google.com/search?q=" + encodeURIComponent(query);
+    }
+  }
 
-    // Button clicks
-    searchBtn.addEventListener("click", function() {
-      window.location.href = "https://www.google.com";
-    });
+  // Enter key
+  input.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      googleSearch();
+    }
+  });
 
-    luckyBtn.addEventListener("click", function() {
-      window.location.href = "https://www.google.com";
-    });
-  </script>
+  // Google Search button
+  searchBtn.addEventListener("click", googleSearch);
+
+  // I'm Feeling Lucky
+  luckyBtn.addEventListener("click", function () {
+    const query = input.value.trim();
+    if (query !== "") {
+      window.location.href =
+        "https://www.google.com/search?btnI=1&q=" +
+        encodeURIComponent(query);
+    }
+  });
+</script>
 
 </body>
 </html>
