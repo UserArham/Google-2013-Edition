@@ -78,7 +78,7 @@
     }
 
     /* Footer */
-   footer {
+  footer {
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -90,17 +90,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .footer-left {
   display: flex;
-  gap: 22px;   /* 👈 proper spacing between items */
+  gap: 22px;        /* space between links */
 }
 
 .footer-right {
+  margin-left: auto; /* force it to right edge */
   white-space: nowrap;
 }
-
     footer span:hover {
       text-decoration: underline;
       cursor: pointer;
