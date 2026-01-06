@@ -149,31 +149,32 @@
 
   function googleSearch() {
     const query = input.value.trim();
-    if (query !== "") {
-      window.location.href =
-        "https://www.google.com/search?q=" + encodeURIComponent(query);
-    }
+    if (!query) return;
+
+    window.location.assign(
+      "https://www.google.com/search?q=" + encodeURIComponent(query)
+    );
   }
 
-  // Enter key
-  input.addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
+  function feelingLucky() {
+    const query = input.value.trim();
+    if (!query) return;
+
+    // Must be direct navigation
+    window.location.assign(
+      "https://www.google.com/search?btnI=1&q=" + encodeURIComponent(query)
+    );
+  }
+
+  // Enter key = Google Search
+  input.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
       googleSearch();
     }
   });
 
-  // Google Search button
-  searchBtn.addEventListener("click", googleSearch);
-
-  // I'm Feeling Lucky
-  luckyBtn.addEventListener("click", function () {
-    const query = input.value.trim();
-    if (query !== "") {
-      window.location.href =
-        "https://www.google.com/search?btnI=1&q=" +
-        encodeURIComponent(query);
-    }
-  });
+  searchBtn.onclick = googleSearch;
+  luckyBtn.onclick = feelingLucky;
 </script>
 
 </body>
