@@ -78,18 +78,28 @@
     }
 
     /* Footer */
-    footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: #f2f2f2;
-      border-top: 1px solid #e4e4e4;
-      font-size: 13px;
-      color: #666;
-      padding: 10px 20px;
-      display: flex;
-      gap: 22px;
-    }
+   footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #f2f2f2;
+  border-top: 1px solid #e4e4e4;
+  font-size: 13px;
+  color: #666;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-left {
+  display: flex;
+  gap: 22px;   /* 👈 proper spacing between items */
+}
+
+.footer-right {
+  white-space: nowrap;
+}
 
     footer span:hover {
       text-decoration: underline;
@@ -120,7 +130,7 @@
     </div>
   </div>
 
- <footer>
+<footer>
   <div class="footer-left">
     <span>Advertising</span>
     <span>Business</span>
@@ -128,7 +138,7 @@
   </div>
 
   <div class="footer-right">
-    ©2013 Google
+    © 2013 Google
   </div>
 </footer>
 
