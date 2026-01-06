@@ -4,42 +4,78 @@
   <meta charset="UTF-8">
   <title>Google</title>
   <link href="/icon/favicon (9).ico" rel="icon" type="image/x-icon">
-  <style>.logo-img {
-  width: 272px;
-  height: auto;
-  margin-bottom: 24px;
-}
 
+  <style>
     /* ===== Base ===== */
     body {
       margin: 0;
-      height: 100vh;
-      background: #ffffff;
       font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
       color: #222;
+      min-height: 100vh;
     }
 
+    /* ===== Top Bar ===== */
+    .top-bar {
+      width: 100%;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      box-sizing: border-box;
+      position: fixed;
+      top: 0;
+      background: #fff;
+      z-index: 100;
+      border-bottom: 1px solid #e4e4e4;
+    }
+
+    .top-bar-right a {
+      margin-right: 15px;
+      text-decoration: none;
+      color: #444;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .top-bar-right a:hover {
+      text-decoration: underline;
+    }
+
+    .apps-btn {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      margin-right: 15px;
+      padding: 0;
+    }
+
+    .apps-btn img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .user-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    /* ===== Container ===== */
     .container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 160px;
+      margin-top: 200px; /* space for top bar */
     }
 
-    /* Logo (2010) */
-    .logo {
-      font-family: "Times New Roman", Georgia, serif;
-      font-size: 94px;
-      font-weight: bold;
-      letter-spacing: -1.5px;
+    /* Logo PNG */
+    .logo-img {
+      width: 272px;
+      height: auto;
       margin-bottom: 24px;
-      text-shadow: 1px 1px 0 #d5d5d5;
     }
-
-    .blue   { color: #3366cc; }
-    .red    { color: #dc3912; }
-    .yellow { color: #ff9900; }
-    .green  { color: #109618; }
 
     /* Search box */
     .search-box {
@@ -78,33 +114,29 @@
     }
 
     /* Footer */
-  footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: #f2f2f2;
-  border-top: 1px solid #e4e4e4;
-  font-size: 13px;
-  color: #666;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-sizing: border-box;
-}
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #f2f2f2;
+      border-top: 1px solid #e4e4e4;
+      font-size: 13px;
+      color: #666;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+    }
 
-.footer-left {
-  display: flex;
-  gap: 22px;        /* space between links */
-}
+    .footer-left {
+      display: flex;
+      gap: 22px;
+    }
 
-.footer-right {
-  margin-left: auto; /* force it to right edge */
-  white-space: nowrap;
-}
-    footer span:hover {
-      text-decoration: underline;
-      cursor: pointer;
+    .footer-right {
+      margin-left: auto;
+      white-space: nowrap;
     }
 
     /* Responsive */
@@ -113,70 +145,80 @@
         width: 90%;
       }
 
-      .logo {
-        font-size: 70px;
+      .logo-img {
+        width: 200px;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- ===== Top Bar ===== -->
+  <header class="top-bar">
+    <div class="top-bar-left"></div>
+    <div class="top-bar-right">
+      <a href="https://mail.google.com" target="_blank">Gmail</a>
+      <a href="https://www.google.com/imghp" target="_blank">Images</a>
+      <button class="apps-btn" title="Google apps">
+        <img src="https://www.gstatic.com/images/branding/product/1x/apps_48dp.png" alt="Apps" />
+      </button>
+      <img src="https://www.w3schools.com/howto/img_avatar.png" alt="User" class="user-avatar" />
+    </div>
+  </header>
+
+  <!-- ===== Container ===== -->
   <div class="container">
-   <img src="images/google-logo.png" alt="Google" class="logo-img">
+    <!-- PNG Logo -->
+    <img src="google-logo.png" alt="Google Logo" class="logo-img">
+
+    <!-- Search Box -->
     <input type="text" id="searchInput" class="search-box" autofocus>
 
+    <!-- Buttons -->
     <div class="buttons">
       <button id="searchBtn">Google Search</button>
       <button id="luckyBtn">I’m Feeling Lucky</button>
     </div>
   </div>
 
-<footer>
-  <div class="footer-left">
-    <span>Advertising</span>
-    <span>Business</span>
-    <span>About</span>
-  </div>
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="footer-left">
+      <span>Advertising</span>
+      <span>Business</span>
+      <span>About</span>
+    </div>
+    <div class="footer-right">© 2013 Google</div>
+  </footer>
 
-  <div class="footer-right">
-    © 2013 Google
-  </div>
-</footer>
+  <!-- ===== JavaScript ===== -->
+  <script>
+    const input = document.getElementById("searchInput");
+    const searchBtn = document.getElementById("searchBtn");
+    const luckyBtn = document.getElementById("luckyBtn");
 
- <script>
-  const input = document.getElementById("searchInput");
-  const searchBtn = document.getElementById("searchBtn");
-  const luckyBtn = document.getElementById("luckyBtn");
-
-  function googleSearch() {
-    const query = input.value.trim();
-    if (!query) return;
-
-    window.location.assign(
-      "https://www.google.com/search?q=" + encodeURIComponent(query)
-    );
-  }
-
-  function feelingLucky() {
-    const query = input.value.trim();
-    if (!query) return;
-
-    // Must be direct navigation
-    window.location.assign(
-      "https://www.google.com/search?btnI=1&q=" + encodeURIComponent(query)
-    );
-  }
-
-  // Enter key = Google Search
-  input.addEventListener("keydown", function (e) {
-    if (e.key === "Enter") {
-      googleSearch();
+    function googleSearch() {
+      const query = input.value.trim();
+      if (!query) return;
+      window.location.assign(
+        "https://www.google.com/search?q=" + encodeURIComponent(query)
+      );
     }
-  });
 
-  searchBtn.onclick = googleSearch;
-  luckyBtn.onclick = feelingLucky;
-</script>
+    function feelingLucky() {
+      const query = input.value.trim();
+      if (!query) return;
+      window.location.assign(
+        "https://www.google.com/search?btnI=1&q=" + encodeURIComponent(query)
+      );
+    }
 
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") googleSearch();
+    });
+
+    searchBtn.onclick = googleSearch;
+    luckyBtn.onclick = feelingLucky;
+  </script>
 </body>
 </html>
