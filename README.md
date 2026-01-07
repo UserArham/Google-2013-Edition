@@ -1,23 +1,24 @@
-# Google 2010 Clone
+# Google 2013 Clone
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-This is a **recreation of the Google homepage circa 2010** using **HTML, CSS, and JavaScript**.  
-It mimics the classic look of Google from 2010, including the serif-style logo, flat buttons, and minimal design.
+This is a **recreation of the Google homepage circa 2013** using **HTML, CSS, and JavaScript**.  
+It mimics the classic look of Google from 2010, including the vector PNG logo, flat buttons, and minimal design.
 
-> **Note:** This is purely a visual clone for educational purposes. It **does not perform real searches**. Buttons and pressing Enter redirect directly to [google.com](https://www.google.com).
+> **Note:** This is purely a visual clone for educational purposes. It **does perform real searches** via **Google**. Buttons and pressing Enter redirect directly to [google.com](https://www.google.com).
 
 ---
 
 ## 🖼 Features
 
-- Classic **2010 Google logo** with serif font and colors:
-  - Blue, Red, Yellow, Green
-- Flat **search box** and **buttons** styled like 2010 Google
+- Classic **2013 Google logo** with `google-icon.png`:
+  - Picture that shown the main **2013 Google Logo**.
+- Flat **search box** and **buttons** styled like **2013 Google webpage**
 - **Enter key support** in the search input
 - **Google Search** and **I’m Feeling Lucky** buttons
 - Footer links (Advertising, Business, About)
 - Fully **responsive** for mobile devices
 - Lightweight, simple, and educational
+- Has Gmail, **Images, and Apps with User icon**
 
 ---
 
@@ -34,12 +35,7 @@ open index.html
 ```
 Structure:
 ``` structure
-google-2010-clone/
-│
-├── index.html       # Main HTML file
-├── style.css        # (Optional) Separate CSS file if extracted
-├── script.js        # (Optional) Separate JS file if extracted
-└── README.md        # This file
+Structure using Github, I can't tell
 ```
 > This only runs when going to the ZIP or a Vercel web.
 # Example of the Google website:
