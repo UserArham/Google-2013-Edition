@@ -99,7 +99,13 @@
 <!-- Main container -->
 <div class="container">
   <img src="images/google-logo.png" class="logo" alt="Google Logo">
-  <input type="text" class="search-box" id="searchInput" placeholder="Search Google or type a URL" autocomplete="off" />
+  <form autocomplete="off" onsubmit="return false;">
+    <!-- Fake hidden inputs to prevent autofill -->
+    <input type="text" name="fakeusernameremembered" style="display:none">
+    <input type="password" name="fakepasswordremembered" style="display:none">
+
+    <input type="text" class="search-box" id="searchInput" placeholder="Search Google or type a URL" autocomplete="off" />
+  </form>
   <div class="buttons">
     <button id="searchBtn">Google Search</button>
     <button id="luckyBtn">I'm Feeling Lucky</button>
