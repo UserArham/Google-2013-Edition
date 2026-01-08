@@ -1,0 +1,5 @@
+define; "google-logo.png"
+from; "images/"
+ define 272x200px
+    div
+      {www.google.com/brst_20%93}
