@@ -18,11 +18,36 @@
       text-decoration: underline;
       font-size: 12px;
     }
+
+    /* Top bar */
     .topbar {
       text-align: right;
-      margin: 10px 20px 0 0;
       font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      height: 25px; /* resized height */
+      line-height: 25px; /* vertically center text */
+      margin: 0 20px;
+    }
+    .topbar img.avatar {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%; /* circular avatar */
+      vertical-align: middle;
+      border: 0;
+      cursor: pointer;
+    }
+    table {
+      margin: 0 auto;
+      margin-top: 120px; /* reduced to match smaller top bar */
+    }
+    input[type="text"] {
+      width: 400px; /* search bar width */
+      font-size: 14px;
+    }
+    input[type="submit"], input[type="button"] {
       font-size: 12px;
+      padding: 3px 8px;
+      margin-left: 5px;
     }
     .footer {
       text-align: center;
@@ -30,19 +55,6 @@
       font-size: 12px;
       color: gray;
       font-family: Arial, Helvetica, sans-serif;
-    }
-    table {
-      margin: 0 auto;
-      margin-top: 150px;
-    }
-    input[type="text"] {
-      width: 400px; /* increased width */
-      font-size: 14px;
-    }
-    input[type="submit"], input[type="button"] {
-      font-size: 12px;
-      padding: 3px 8px;
-      margin-left: 5px;
     }
   </style>
 </head>
@@ -53,7 +65,7 @@
     <a href="https://mail.google.com" target="_blank">Gmail</a> |
     <a href="https://www.google.com/imghp" target="_blank">Images</a> |
     <a href="#" title="Google Apps">Apps</a> |
-    <a href="#"><img src="https://www.w3schools.com/howto/img_avatar.png" alt="User" width="20" height="20" style="vertical-align: middle; border: 0;" /></a>
+    <a href="#"><img src="https://www.w3schools.com/howto/img_avatar.png" alt="User" class="avatar" /></a>
   </div>
 
   <!-- Main search form centered -->
