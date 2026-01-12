@@ -6,214 +6,101 @@
 <link href="/favicon.ico" rel="icon" type="image/x-icon">
 
 <style>
-/* =========================
-   GOOGLE 2015 VARIABLES
-========================= */
-:root {
-  --bg: #ffffff;
-  --text: #222;
-  --topbar-bg: #222;
-  --topbar-text: #ccc;
-  --border: #d9d9d9;
-  --button-bg: #f5f5f5;
-  --button-border: #dcdcdc;
-  --footer-text: #666;
-  --link: #6666cc;
-  --modal-bg: #ffffff;
-  --divider: #dadce0;
+:root{
+  --bg:#fff;--text:#222;--topbar-bg:#222;--topbar-text:#ccc;
+  --border:#d9d9d9;--button-bg:#f5f5f5;--button-border:#dcdcdc;
+  --footer-text:#666;--link:#6666cc;--modal-bg:#fff;--divider:#dadce0;
+}
+.dark{
+  --bg:#0f0f0f;--text:#e8eaed;--topbar-bg:#1a1a1a;--topbar-text:#bdbdbd;
+  --border:#3c4043;--button-bg:#2a2a2a;--button-border:#3c4043;
+  --footer-text:#9aa0a6;--link:#8ab4f8;--modal-bg:#1c1c1c;--divider:#3c4043;
 }
 
-/* ===== DARK MODE ===== */
-.dark {
-  --bg: #0f0f0f;
-  --text: #e8eaed;
-  --topbar-bg: #1a1a1a;
-  --topbar-text: #bdbdbd;
-  --border: #3c4043;
-  --button-bg: #2a2a2a;
-  --button-border: #3c4043;
-  --footer-text: #9aa0a6;
-  --link: #8ab4f8;
-  --modal-bg: #1c1c1c;
-  --divider: #3c4043;
+body{
+  margin:0;font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);color:var(--text);text-align:center;
 }
 
-/* =========================
-   BASE
-========================= */
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  text-align: center;
-  transition: background .35s ease, color .35s ease;
+/* Top bar */
+.topbar{
+  background:var(--topbar-bg);color:var(--topbar-text);
+  font-size:13px;padding:7px 15px 6px;
+  display:flex;justify-content:space-between;align-items:center;
+  position:fixed;top:0;width:100%;z-index:100;
+}
+.topbar-left a{
+  color:var(--topbar-text);text-decoration:none;
+  margin-right:12px;cursor:pointer;
+}
+.topbar-left a.active{font-weight:bold;color:white}
+
+/* TOGGLE */
+.theme-toggle{
+  width:42px;height:22px;border-radius:20px;
+  background:#555;cursor:pointer;position:relative;
+}
+.theme-toggle::before{
+  content:"☀️";position:absolute;left:2px;top:2px;
+  width:18px;height:18px;background:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  transition:.35s;
+}
+.dark .theme-toggle{background:#1e3a8a}
+.dark .theme-toggle::before{
+  content:"🌙";transform:translateX(20px) rotate(360deg)
 }
 
-/* =========================
-   TOP BAR (FIXED)
-========================= */
-.topbar {
-  background-color: var(--topbar-bg);
-  color: var(--topbar-text);
-  font-size: 13px;
-  padding: 7px 15px 6px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100;
+/* MAIN */
+.container{margin-top:120px}
+.logo-line{display:flex;justify-content:center;align-items:center;gap:18px;margin-bottom:24px}
+.logo-line img{width:272px}
+.logo-divider{width:2px;height:60px;background:var(--divider)}
+
+.search-box{
+  width:520px;height:26px;padding:0 8px;font-size:16px;
+  border:1px solid var(--border);background:var(--bg);color:var(--text)
+}
+.search-box:focus{
+  outline:none;border-color:#4d90fe;
+  box-shadow:0 0 6px #4d90fe
+}
+.buttons{margin-top:20px}
+button{
+  font-size:13px;padding:6px 12px;margin:0 4px;
+  border:1px solid var(--button-border);
+  background:var(--button-bg);cursor:pointer;color:var(--text)
 }
 
-.topbar-left {
-  display: flex;
-  align-items: center;
+/* VIDEO */
+.video-container{
+  margin-top:40px;display:flex;justify-content:center
+}
+.video-container video{
+  width:560px;max-width:90%;border-radius:4px
 }
 
-.topbar-left a {
-  color: var(--topbar-text);
-  text-decoration: none;
-  margin-right: 12px;
-  cursor: pointer;
-  position: relative;
-  z-index: 110;
+/* FOOTER */
+footer{
+  margin-top:100px;font-size:12px;color:var(--footer-text)
 }
+footer a{color:var(--link);text-decoration:none;margin:0 10px}
 
-.topbar-left a.active {
-  font-weight: bold;
-  color: white;
+/* MODAL */
+.modal{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.6);z-index:1000
 }
-
-/* =========================
-   ANIMATED TOGGLE
-========================= */
-.theme-toggle {
-  width: 42px;
-  height: 22px;
-  border-radius: 20px;
-  background: #555;
-  position: relative;
-  cursor: pointer;
-  margin-left: 15px;
-  z-index: 105;
-  transition: background .35s ease;
+.modal-content{
+  display:none;background:var(--modal-bg);color:var(--text);
+  margin:100px auto;padding:30px;width:360px;
+  border-radius:2px
 }
-
-.theme-toggle::before {
-  content: "☀️";
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  left: 2px;
-  top: 2px;
-  background: #fff;
-  border-radius: 50%;
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform .35s ease;
-}
-
-.dark .theme-toggle {
-  background: #1e3a8a;
-}
-
-.dark .theme-toggle::before {
-  content: "🌙";
-  transform: translateX(20px) rotate(360deg);
-}
-
-/* =========================
-   CONTENT
-========================= */
-.container {
-  margin-top: 120px;
-}
-
-.logo-line {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 18px;
-  margin-bottom: 24px;
-}
-
-.logo-line img {
-  width: 272px;
-}
-
-.logo-divider {
-  width: 2px;
-  height: 60px;
-  background-color: var(--divider);
-}
-
-/* =========================
-   SEARCH
-========================= */
-.search-box {
-  width: 520px;
-  height: 26px;
-  padding: 0 8px;
-  font-size: 16px;
-  border: 1px solid var(--border);
-  border-radius: 2px;
-  background: var(--bg);
-  color: var(--text);
-}
-
-.search-box:focus {
-  outline: none;
-  border-color: #4285f4;
-  box-shadow: 0 0 6px rgba(66,133,244,.6);
-}
-
-.buttons {
-  margin-top: 20px;
-}
-
-button {
-  font-size: 13px;
-  padding: 6px 12px;
-  margin: 0 4px;
-  border: 1px solid var(--button-border);
-  border-radius: 2px;
-  background-color: var(--button-bg);
-  color: var(--text);
-  cursor: pointer;
-}
-
-/* =========================
-   VIDEO
-========================= */
-.video-container {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-}
-
-.video-container video {
-  width: 560px;
-  max-width: 90%;
-  border-radius: 4px;
-}
-
-/* =========================
-   FOOTER (ORIGINAL)
-========================= */
-footer {
-  margin-top: 100px;
-  font-size: 12px;
-  color: var(--footer-text);
-}
-
-footer a {
-  color: var(--link);
-  text-decoration: none;
-  margin: 0 10px;
+.modal-content.active{display:block}
+.modal-content input{
+  width:90%;padding:8px;margin:10px 0;
+  background:var(--bg);color:var(--text);
+  border:1px solid var(--border)
 }
 </style>
 </head>
@@ -229,15 +116,16 @@ footer a {
     <a href="https://play.google.com" target="_blank">Play</a>
     <a href="https://www.youtube.com" target="_blank">YouTube</a>
     <a href="https://news.google.com" target="_blank">News</a>
-    <a href="https://photos.google.com/login" target="_blank">Photos</a>
+    <a href="https://photo.google.com/login" target="_blank">Photos</a>
+    <a href="https://github.com/UserArham/Google-2015-Edition" target="_blank">Github Repo</a>
     <a id="signinBtn">Log in</a>
   </div>
-
   <div id="themeToggle" class="theme-toggle"></div>
 </div>
 
 <!-- MAIN -->
 <div class="container">
+
   <div class="logo-line">
     <img src="/google-logo.png">
     <div class="logo-divider"></div>
@@ -245,11 +133,8 @@ footer a {
   </div>
 
   <form onsubmit="return false;">
-    <input
-      type="text"
-      class="search-box"
-      id="searchInput"
-      placeholder="Search Google or type a URL">
+    <input id="searchInput" class="search-box"
+           placeholder="Search Google or type a URL">
   </form>
 
   <div class="buttons">
@@ -262,36 +147,76 @@ footer a {
       <source src="/advertising.mp4" type="video/mp4">
     </video>
   </div>
+
 </div>
 
-<!-- FOOTER (UNCHANGED) -->
+<!-- FOOTER -->
 <footer>
   <a href="https://ads.google.com" target="_blank">Advertising Programs</a>
   <a href="https://www.google.com/services/" target="_blank">Business Solutions</a>
   <a href="https://about.google/" target="_blank">About Google</a>
-  <br>© 2015 Google. The 2013-2015 Google logo will be replaced in 8 months.
+  <br>© 2015 Google. The 2013–2015 Google logo will be replaced in 8 months.
 </footer>
+
+<!-- LOGIN MODAL -->
+<div id="signinModal" class="modal">
+
+  <div class="modal-content active" id="modalStep1">
+    <img src="/google-logo.png" width="120"><br><br>
+    <h2>Sign in to Google</h2>
+    <input placeholder="Email or phone">
+    <button id="nextBtn">Next</button>
+  </div>
+
+  <div class="modal-content" id="modalStep2">
+    <img src="/google-logo.png" width="120"><br><br>
+    <h2>Welcome! Enter your password.</h2>
+    <input type="password" placeholder="Password">
+    <button id="signinFinalBtn">Sign in</button>
+    <button id="backBtn">Back</button>
+  </div>
+
+  <div class="modal-content" id="modalStep3">
+    <h2>Welcome, user1283!</h2>
+    <p>You are now signed in.</p>
+    <button id="closeBtn">Exit</button>
+  </div>
+
+</div>
 
 <script>
 /* SEARCH */
-const input = document.getElementById("searchInput");
-searchBtn.onclick = () => input.value &&
-  (location.href =
-   "https://www.google.com/search?q=" + encodeURIComponent(input.value));
+searchBtn.onclick=()=>searchInput.value &&
+(location.href="https://www.google.com/search?q="+encodeURIComponent(searchInput.value));
+luckyBtn.onclick=()=>searchInput.value &&
+(location.href="https://www.google.com/search?btnI=1&q="+encodeURIComponent(searchInput.value));
 
-luckyBtn.onclick = () => input.value &&
-  (location.href =
-   "https://www.google.com/search?btnI=1&q=" + encodeURIComponent(input.value));
+/* LOGIN */
+signinBtn.onclick=()=>{
+  signinModal.style.display="block";
+  modalStep1.classList.add("active");
+  modalStep2.classList.remove("active");
+  modalStep3.classList.remove("active");
+};
+nextBtn.onclick=()=>{
+  modalStep1.classList.remove("active");
+  modalStep2.classList.add("active");
+};
+signinFinalBtn.onclick=()=>{
+  modalStep2.classList.remove("active");
+  modalStep3.classList.add("active");
+};
+backBtn.onclick=()=>{
+  modalStep2.classList.remove("active");
+  modalStep1.classList.add("active");
+};
+closeBtn.onclick=()=>signinModal.style.display="none";
 
-/* THEME TOGGLE */
-const toggle = document.getElementById("themeToggle");
-const root = document.documentElement;
-
-if (localStorage.theme === "dark") root.classList.add("dark");
-
-toggle.onclick = () => {
-  root.classList.toggle("dark");
-  localStorage.theme = root.classList.contains("dark") ? "dark" : "light";
+/* THEME */
+if(localStorage.theme==="dark")document.documentElement.classList.add("dark");
+themeToggle.onclick=()=>{
+  document.documentElement.classList.toggle("dark");
+  localStorage.theme=document.documentElement.classList.contains("dark")?"dark":"light";
 };
 </script>
 
