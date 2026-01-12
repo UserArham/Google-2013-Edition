@@ -6,183 +6,222 @@
 <link href="/favicon.ico" rel="icon" type="image/x-icon">
 
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #fff;
-    color: #222;
-    text-align: center;
-  }
+/* =====================
+   THEME VARIABLES
+===================== */
+:root {
+  --bg: #ffffff;
+  --text: #222;
+  --topbar-bg: #222;
+  --topbar-text: #ccc;
+  --border: #d9d9d9;
+  --button-bg: #f5f5f5;
+  --button-border: #dcdcdc;
+  --footer-text: #666;
+  --link: #6666cc;
+  --modal-bg: #ffffff;
+  --divider: #dadce0;
+}
 
-  /* Top bar */
-  .topbar {
-    background-color: #222;
-    color: #ccc;
-    font-size: 13px;
-    padding: 7px 15px 6px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
+/* =====================
+   AUTO DARK MODE
+===================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121212;
+    --text: #e8eaed;
+    --topbar-bg: #1f1f1f;
+    --topbar-text: #bbb;
+    --border: #3c4043;
+    --button-bg: #303134;
+    --button-border: #3c4043;
+    --footer-text: #9aa0a6;
+    --link: #8ab4f8;
+    --modal-bg: #202124;
+    --divider: #3c4043;
   }
+}
 
-  .topbar-left a {
-    color: #ccc;
-    text-decoration: none;
-    margin-right: 12px;
-    cursor: pointer;
-  }
+/* =====================
+   FORCED DARK MODE
+===================== */
+.force-dark {
+  --bg: #121212;
+  --text: #e8eaed;
+  --topbar-bg: #1f1f1f;
+  --topbar-text: #bbb;
+  --border: #3c4043;
+  --button-bg: #303134;
+  --button-border: #3c4043;
+  --footer-text: #9aa0a6;
+  --link: #8ab4f8;
+  --modal-bg: #202124;
+  --divider: #3c4043;
+}
 
-  .topbar-left a.active {
-    font-weight: bold;
-    color: white;
-  }
+/* =====================
+   BASE STYLES
+===================== */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  text-align: center;
+}
 
-  .topbar-left a:hover {
-    text-decoration: underline;
-  }
+/* Top bar */
+.topbar {
+  background-color: var(--topbar-bg);
+  color: var(--topbar-text);
+  font-size: 13px;
+  padding: 7px 15px 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
 
-  /* Main container */
-  .container {
-    margin-top: 120px;
-  }
+.topbar-left a {
+  color: var(--topbar-text);
+  text-decoration: none;
+  margin-right: 12px;
+}
 
-  /* Logo line */
-  .logo-line {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 18px;
-    margin-bottom: 24px;
-  }
+.topbar-left a.active {
+  color: #fff;
+  font-weight: bold;
+}
 
-  .logo-line img {
-    width: 272px;
-  }
+.topbar button {
+  background: none;
+  border: none;
+  color: var(--topbar-text);
+  font-size: 16px;
+  cursor: pointer;
+}
 
-  .logo-divider {
-    width: 2px;
-    height: 60px;
-    background-color: #dadce0;
-  }
+/* Main container */
+.container {
+  margin-top: 120px;
+}
 
-  /* Search */
-  .search-box {
-    width: 520px;
-    height: 26px;
-    padding: 0 8px;
-    font-size: 16px;
-    border: 1px solid #d9d9d9;
-    border-radius: 2px;
-  }
+/* Logo */
+.logo-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 24px;
+}
 
-  .search-box:focus {
-    outline: none;
-    border-color: #4d90fe;
-    box-shadow: 0 0 6px #4d90fe;
-  }
+.logo-line img {
+  width: 272px;
+}
 
-  .buttons {
-    margin-top: 20px;
-  }
+.logo-divider {
+  width: 2px;
+  height: 60px;
+  background-color: var(--divider);
+}
 
-  button {
-    font-size: 13px;
-    padding: 6px 12px;
-    margin: 0 4px;
-    border: 1px solid #dcdcdc;
-    border-radius: 2px;
-    background-color: #f5f5f5;
-    cursor: pointer;
-  }
+/* Search */
+.search-box {
+  width: 520px;
+  height: 26px;
+  padding: 0 8px;
+  font-size: 16px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: var(--bg);
+  color: var(--text);
+}
 
-  button:hover {
-    background-color: #f8f8f8;
-    border-color: #c6c6c6;
-  }
+.search-box:focus {
+  outline: none;
+  border-color: #8ab4f8;
+  box-shadow: 0 0 6px rgba(138,180,248,0.6);
+}
 
-  /* Video */
-  .video-container {
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-  }
+.buttons {
+  margin-top: 20px;
+}
 
-  .video-container video {
-    width: 560px;
-    max-width: 90%;
-    border-radius: 4px;
-  }
+button {
+  font-size: 13px;
+  padding: 6px 12px;
+  margin: 0 4px;
+  border: 1px solid var(--button-border);
+  border-radius: 2px;
+  background-color: var(--button-bg);
+  color: var(--text);
+  cursor: pointer;
+}
 
-  /* Footer */
-  footer {
-    margin-top: 100px;
-    font-size: 12px;
-    text-align: center;
-    color: #666;
-  }
+button:hover {
+  filter: brightness(1.1);
+}
 
-  footer a {
-    color: #6666cc;
-    text-decoration: none;
-    margin: 0 10px;
-  }
+/* Video */
+.video-container {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
 
-  footer a:hover {
-    text-decoration: underline;
-  }
+.video-container video {
+  width: 560px;
+  max-width: 90%;
+  border-radius: 4px;
+}
 
-  /* Sign-in modal */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.6);
-  }
+/* Footer */
+footer {
+  margin-top: 100px;
+  font-size: 12px;
+  color: var(--footer-text);
+}
 
-  .modal-content {
-    display: none;
-    background-color: #fff;
-    margin: 100px auto;
-    padding: 30px;
-    width: 360px;
-    text-align: center;
-    border-radius: 2px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  }
+footer a {
+  color: var(--link);
+  text-decoration: none;
+  margin: 0 10px;
+}
 
-  .modal-content.active {
-    display: block;
-  }
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 1000;
+}
 
-  .modal-content img {
-    width: 120px;
-    margin-bottom: 20px;
-  }
+.modal-content {
+  display: none;
+  background: var(--modal-bg);
+  color: var(--text);
+  margin: 100px auto;
+  padding: 30px;
+  width: 360px;
+  border-radius: 4px;
+}
 
-  .modal-content input {
-    width: 90%;
-    padding: 8px;
-    margin: 10px 0;
-    font-size: 14px;
-  }
+.modal-content.active {
+  display: block;
+}
 
-  .modal-content h2 {
-    margin: 0 0 15px;
-    font-weight: normal;
-  }
-
-  .modal-content button {
-    width: 45%;
-    margin: 5px;
-  }
+.modal-content input {
+  width: 90%;
+  padding: 8px;
+  margin: 10px 0;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
 </style>
 </head>
 
@@ -191,142 +230,75 @@
 <!-- Top bar -->
 <div class="topbar">
   <div class="topbar-left">
-    <a href="#" class="active">Search</a>
-    <a href="https://www.google.com/imghp" target="_blank" rel="noopener">Images</a>
-    <a href="https://maps.google.com" target="_blank" rel="noopener">Maps</a>
-    <a href="https://play.google.com" target="_blank" rel="noopener">Play</a>
-    <a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube</a>
-    <a href="https://news.google.com" target="_blank" rel="noopener">News</a>
-    <a href="https://photo.google.com/login" target="_blank" rel="noopener">Photos</a>
-    <a href="https://github.com/UserArham/Google-2015-Edition" target="_blank" rel="noopener">Github Repo</a>
+    <a class="active">Search</a>
+    <a href="https://www.google.com/imghp" target="_blank">Images</a>
+    <a href="https://maps.google.com" target="_blank">Maps</a>
+    <a href="https://play.google.com" target="_blank">Play</a>
+    <a href="https://www.youtube.com" target="_blank">YouTube</a>
+    <a href="https://news.google.com" target="_blank">News</a>
+    <a href="https://photo.google.com/login" target="_blank">Photos</a>
+    <a href="https://github.com/UserArham/Google-2015-Edition" target="_blank">Github Repo</a>
     <a id="signinBtn">Log in</a>
   </div>
+  <button id="themeToggle">🌙</button>
 </div>
 
-<!-- Main container -->
 <div class="container">
-
   <div class="logo-line">
-    <img src="/google-logo.png" alt="Google Logo">
+    <img src="/google-logo.png">
     <div class="logo-divider"></div>
-    <img src="/google-logo3.png" alt="Google Logo">
+    <img src="/google-logo3.png">
   </div>
 
-  <form autocomplete="off" onsubmit="return false;">
-    <input type="text" name="fakeusernameremembered" style="display:none">
-    <input type="password" name="fakepasswordremembered" style="display:none">
-
-    <input
-      type="text"
-      class="search-box"
-      id="searchInput"
-      placeholder="Search Google or type a URL"
-      autocomplete="off"
-    >
-  </form>
+  <input class="search-box" id="searchInput" placeholder="Search Google or type a URL">
 
   <div class="buttons">
     <button id="searchBtn">Google Search</button>
     <button id="luckyBtn">I'm Feeling Lucky</button>
   </div>
 
-  <!-- Advertising video -->
   <div class="video-container">
     <video controls>
       <source src="/advertising.mp4" type="video/mp4">
-      Your browser does not support the video tag.
     </video>
   </div>
-
 </div>
 
-<!-- Footer -->
 <footer>
-  <a href="https://ads.google.com" target="_blank" rel="noopener">Advertising Programs</a>
-  <a href="https://www.google.com/services/" target="_blank" rel="noopener">Business Solutions</a>
-  <a href="https://about.google/" target="_blank" rel="noopener">About Google</a>
-  <br>© 2015 Google. The 2013-2015 Google logo will be replaced in 8 months.
+  <a href="#">Advertising</a>
+  <a href="#">Business</a>
+  <a href="#">About</a>
+  <br>© 2015 Google
 </footer>
 
-<!-- Sign-in Modal -->
 <div id="signinModal" class="modal">
-  <div class="modal-content" id="modalStep1">
-    <img src="/google-logo.png">
-    <h2>Sign in to Google</h2>
-    <input type="email" placeholder="Email or phone">
-    <div>
-      <button id="nextBtn">Next</button>
-      <button id="backBtn1">Back</button>
-    </div>
-  </div>
-
-  <div class="modal-content" id="modalStep2">
-    <img src="/google-logo.png">
-    <h2>Welcome! Enter your password.</h2>
-    <input type="password" placeholder="Password">
-    <div>
-      <button id="signinFinalBtn">Sign in</button>
-      <button id="backBtn2">Back</button>
-    </div>
-  </div>
-
-  <div class="modal-content" id="modalStep3">
-    <h2>Welcome, user1283!</h2>
-    <p>You are now signed in.</p>
-    <button id="closeModalBtn">Exit</button>
+  <div class="modal-content active">
+    <h2>Sign in</h2>
+    <input placeholder="Email">
+    <button onclick="document.getElementById('signinModal').style.display='none'">Close</button>
   </div>
 </div>
 
 <script>
-  const input = document.getElementById("searchInput");
-  const modal = document.getElementById("signinModal");
+const input = document.getElementById("searchInput");
 
-  function googleSearch() {
-    if (!input.value.trim()) return;
-    window.location.href =
-      "https://www.google.com/search?q=" +
-      encodeURIComponent(input.value);
-  }
+document.getElementById("searchBtn").onclick = () => {
+  if (input.value.trim())
+    location.href = "https://www.google.com/search?q=" + encodeURIComponent(input.value);
+};
 
-  function feelingLucky() {
-    if (!input.value.trim()) return;
-    window.location.href =
-      "https://www.google.com/search?btnI=1&q=" +
-      encodeURIComponent(input.value);
-  }
+document.getElementById("luckyBtn").onclick = () => {
+  if (input.value.trim())
+    location.href = "https://www.google.com/search?btnI=1&q=" + encodeURIComponent(input.value);
+};
 
-  document.getElementById("searchBtn").onclick = googleSearch;
-  document.getElementById("luckyBtn").onclick = feelingLucky;
+document.getElementById("signinBtn").onclick = () => {
+  document.getElementById("signinModal").style.display = "block";
+};
 
-  document.getElementById("signinBtn").onclick = () => {
-    modal.style.display = "block";
-    modalStep1.classList.add("active");
-    modalStep2.classList.remove("active");
-    modalStep3.classList.remove("active");
-  };
-
-  document.getElementById("nextBtn").onclick = () => {
-    modalStep1.classList.remove("active");
-    modalStep2.classList.add("active");
-  };
-
-  document.getElementById("signinFinalBtn").onclick = () => {
-    modalStep2.classList.remove("active");
-    modalStep3.classList.add("active");
-  };
-
-  document.getElementById("closeModalBtn").onclick = () => {
-    modal.style.display = "none";
-  };
-
-  document.getElementById("backBtn1").onclick = () => {
-    modal.style.display = "none";
-  };
-
-  document.getElementById("backBtn2").onclick = () => {
-    modalStep2.classList.remove("active");
-    modalStep1.classList.add("active");
-  };
+document.getElementById("themeToggle").onclick = () => {
+  document.documentElement.classList.toggle("force-dark");
+};
 </script>
 
 </body>
